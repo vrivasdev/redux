@@ -7,7 +7,6 @@ function handleSubmit(event) {
   event.preventDefault();
   const data = new FormData($form);
   const title = data.get('title');
-  console.log(title);
 }
 
 const initialState = [
@@ -27,3 +26,14 @@ const store = createStore(
   {initialState},
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
 )
+
+const $container = document.getElementById('playlist');
+const playlist = store.getState();
+
+playlist.initialState.forEach((item) => {
+  const template = document.createElement('p');
+  template.textContent = item.title;
+  $container.appendChild(template);
+});
+
+console.log(store.getState());
