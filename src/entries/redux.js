@@ -7,13 +7,12 @@ function handleSubmit(event) {
   event.preventDefault();
   const data = new FormData($form);
   const title = data.get('title');
-  console.log(title);
   store.dispatch({ // actions
     type: 'ADD_SONG', // mandatory
     payload: {
       title // ES6: title is the same key. Ex: 'title': title
     }
-  });
+  })
 }
 
 const initialState = [
@@ -28,16 +27,25 @@ const initialState = [
   },
 ]
 
+const reducer = function(state, action) {
+  switch (action.type) {
+    case 'ADD_SONG':
+      return [...state, action.payload]
+    default:
+      return state
+  }
+}
+
 const store = createStore(
-  (state) => state,
-  {initialState},
+  reducer,
+  initialState,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
 )
 
 const $container = document.getElementById('playlist');
 const playlist = store.getState();
 
-playlist.initialState.forEach((item) => {
+playlist.forEach((item) => {
   const template = document.createElement('p');
   template.textContent = item.title;
   $container.appendChild(template);
