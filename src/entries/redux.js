@@ -7,6 +7,13 @@ function handleSubmit(event) {
   event.preventDefault();
   const data = new FormData($form);
   const title = data.get('title');
+  console.log(title);
+  store.dispatch({ // actions
+    type: 'ADD_SONG', // mandatory
+    payload: {
+      title // ES6: title is the same key. Ex: 'title': title
+    }
+  });
 }
 
 const initialState = [
