@@ -62,7 +62,7 @@ function handleChange() { // render per each change
   render();
 }
 
-/* NOTE: Updating app with subscribe:
+/* NOTE: STATE => UI | Updating app with subscribe:
  * Every time the state gets updated the UI is going to be rendered again.
  * This is the last step of the redux cicle
  */
