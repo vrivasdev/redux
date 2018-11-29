@@ -1,9 +1,10 @@
 import React from 'react';
-import { render } from 'react-dom';
-import Home from '../pages/containers/home';
 import data from '../api.json';
-import { Provider } from 'react-redux';
+import { render } from 'react-dom';
 import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+import Home from '../pages/containers/home';
+import reducer from '../reducers/data';
 
 const initialState = {
   data: {
@@ -12,7 +13,7 @@ const initialState = {
 }
 
 const store = createStore(
-  (state) => state, // reducer
+  reducer, // reducer
   initialState , // initial state
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__() // enhancer
 );

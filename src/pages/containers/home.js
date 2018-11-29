@@ -1,11 +1,12 @@
+import { connect } from 'react-redux';
 import React, { Component } from 'react';
-import HomeLayout from '../components/home-layout';
-import Categories from '../../categories/components/categories';
 import Related from '../components/related';
-import ModalContainer from '../../widgets/containers/modal';
 import Modal from '../../widgets/components/modal';
+import HomeLayout from '../components/home-layout';
+import ModalContainer from '../../widgets/containers/modal';
 import HandleError from '../../error/containers/handle-error';
 import VideoPlayer from '../../player/containers/video-player';
+import Categories from '../../categories/components/categories';
 
 class Home extends Component {
   state = {
@@ -28,7 +29,7 @@ class Home extends Component {
         <HomeLayout>
           <Related />
           <Categories
-            categories={this.props.data.categories}
+            categories={this.props.categories}
             handleOpenModal={this.handleOpenModal}
           />
           {
@@ -50,5 +51,12 @@ class Home extends Component {
     )
   }
 }
+// It will return the mapped state and props data to the component
+function mapStateToProps(state, props) {
+  return {
+    categories: state.data.categories // Component call: this.props.categories
+  }
+}
 
-export default Home
+/* NOTE: connect state data to component. I'll send propierties and state to component */
+export default connect(mapStateToProps)(Home)
