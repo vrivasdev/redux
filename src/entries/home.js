@@ -3,8 +3,13 @@ import data from '../api.json';
 import { render } from 'react-dom';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import Home from '../pages/containers/home';
 import reducer from '../reducers/data';
+import Home from '../pages/containers/home';
+import normalizedData from '../schemas/index.js';
+
+console.log("______ normalized data _____");
+console.log(normalizedData);
+console.log("_____________________");
 
 const initialState = {
   data: {
