@@ -54,8 +54,11 @@ class Home extends Component {
 }
 // It will return the mapped state and props data to the component
 function mapStateToProps(state, props) {
+  const categories = state.data.categories.map(categoryId => {
+    return state.data.entities.categories[categoryId]
+  })
   return {
-    categories: state.data.categories, // Component call: this.props.categories
+    categories: categories, // Component call: this.props.categories
     search: state.search
   }
 }
