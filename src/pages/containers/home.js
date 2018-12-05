@@ -59,7 +59,7 @@ function mapStateToProps(state, props) {
   })
   return {
     categories: categories, // Component call: this.props.categories
-    search: state.search
+    search: state.data.search
   }
 }
 
